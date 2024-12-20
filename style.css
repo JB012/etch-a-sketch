@@ -1,9 +1,18 @@
+html {
+    background-color: gray;
+}
+
+button {
+    display: flex;
+    justify-self: center;
+    align-self: center;
+}
+
 .container {
     display: grid;
-    grid-template-columns: repeat(16, auto); /*repeat starts from 0*/
-    grid-template-rows: repeat(16, auto);
-    justify-content: center;
+    justify-self: center;
     align-items: center;
+    background-color:white;
 }
 
 .item {

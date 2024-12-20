@@ -1,18 +1,33 @@
 const container = document.querySelector(".container");
+const button = document.querySelector("button");
 
 
-for (let i = 0; i < 16; i++) {
-    for (let j = 0; j < 16; j++) {
-        const square = document.createElement("div");
-        square.classList.add("item");
-        container.appendChild(square);
+function createGrid(num) {
+    container.setAttribute("style", `grid-template-columns: repeat(${num}, auto);`, 
+        `grid-template-rows: repeat(${num}, auto);`);
+        
+    for (let i = 0; i < num; i++) {
+        for (let j = 0; j < num; j++) {
+            const square = document.createElement("div");
+            square.classList.add("item");
+            square.addEventListener('mouseover', (event) => {
+                event.target.style.backgroundColor = "red";
+            });
+            container.appendChild(square);
+        }
     }
 }
 
-const items = document.querySelectorAll(".item");
+createGrid(16);
 
-for (let i = 0; i < items.length; i++) {
-    items[i].addEventListener('mouseover', (event) => {
-        event.target.style.borderColor = "red";
-    })
-}
+button.addEventListener("click", () => {
+    const gridNum = prompt("Enter a number c for a cxc grid.");
+
+    while (parseInt(gridNum) === NaN) {
+        const gridNum = prompt("Enter a number c for a cxc grid.");
+    }
+
+    container.innerHTML = ''; /*Removing all children*/
+    createGrid(parseInt(gridNum));
+
+});
